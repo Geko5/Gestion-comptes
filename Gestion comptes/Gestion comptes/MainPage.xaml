@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Gestion_comptes.MainPage">
+
+    <Grid BackgroundColor="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Frise du haut avec les dates-->
+        <StackLayout Grid.ColumnSpan="2" 
+                     Orientation="Horizontal"
+                     Margin="15,15">
+            <Label x:Name="LabelDate"
+                   FontSize="Large"/>
+            <Label x:Name="LabelMonth"
+                   FontSize="Large" 
+                   HorizontalOptions="EndAndExpand"/>
+        </StackLayout>
+
+        <!-- Fenêtres au milieu de l'application-->
+        <Frame CornerRadius="5" 
+               Grid.Row="1" 
+               Grid.Column="0" 
+               OutlineColor="Black" 
+               Padding="0" 
+               BackgroundColor="LightGray" 
+               Margin="30,1,1,1"
+               BorderColor="SlateGray">
+            <StackLayout>
+                <Label Text="Actuel"
+                       TextColor="Black"
+                       FontSize="Large" 
+                       HorizontalTextAlignment="Center"
+                       Margin="0,10,0,0"/>
+                <Label Text="+ 180 euros"
+                       TextColor="Green"
+                       FontSize="Large" 
+                       HorizontalTextAlignment="Center"
+                       Margin="0,15,0,0"/>
+            </StackLayout>
+        </Frame>
+
+        <Frame CornerRadius="5" 
+               Grid.Row="1" 
+               Grid.Column="1" 
+               OutlineColor="Black" 
+               Padding="0" 
+               BackgroundColor="LightGray" 
+               Margin="1,1,30,1"
+               BorderColor="SlateGray">
+            <StackLayout>
+                <Label Text="Dépenses"
+                       TextColor="Black"
+                       FontSize="Large" 
+                       HorizontalTextAlignment="Center"
+                       Margin="0,10,0,0"/>
+                <Label Text="- 80 euros"
+                       TextColor="Red"
+                       FontSize="Large" 
+                       HorizontalTextAlignment="Center"
+                       Margin="0,15,0,0"/>
+            </StackLayout>
+        </Frame>
+
+        <Frame CornerRadius="5" 
+               Grid.Row="2" 
+               Grid.Column="0" 
+               OutlineColor="Black" 
+               Padding="0" 
+               BackgroundColor="LightGray" 
+               Margin="30,1,1,1"
+               BorderColor="SlateGray">
+            <StackLayout>
+                <Label Text="Frais fixes"
+                       TextColor="Black"
+                       FontSize="Large" 
+                       HorizontalTextAlignment="Center"
+                       Margin="0,10,0,0"/>
+                <Label Text="- 542 euros"
+                       TextColor="Red"
+                       FontSize="Large" 
+                       HorizontalTextAlignment="Center"
+                       Margin="0,15,0,0"/>
+            </StackLayout>
+        </Frame>
+
+        <Frame CornerRadius="5" 
+               Grid.Row="2" 
+               Grid.Column="1" 
+               OutlineColor="Black" 
+               Padding="0" 
+               BackgroundColor="LightGray" 
+               Margin="1,1,30,1"
+               BorderColor="SlateGray">
+            <StackLayout>
+                <Label Text="Entrées"
+                       TextColor="Black"
+                       FontSize="Large" 
+                       HorizontalTextAlignment="Center"
+                       Margin="0,10,0,0"/>
+                <Label Text="+ 1733 euros"
+                       TextColor="Green"
+                       FontSize="Large" 
+                       HorizontalTextAlignment="Center"
+                       Margin="0,15,0,0"/>
+            </StackLayout>
+        </Frame>
+
+        <Frame CornerRadius="5" 
+               Grid.Row="3" 
+               Grid.Column="0" 
+               OutlineColor="Black" 
+               Padding="0" 
+               BackgroundColor="LightGray" 
+               Margin="30,1,1,1"
+               BorderColor="SlateGray">
+            <StackLayout>
+                <Label Text="Epargne"
+                       TextColor="Black"
+                       FontSize="Large" 
+                       HorizontalTextAlignment="Center"
+                       Margin="0,10,0,0"/>
+                <ListView>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Label Text="Test"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </Frame>
+
+        <Frame CornerRadius="5" 
+               Grid.Row="3" 
+               Grid.Column="1" 
+               OutlineColor="Black" 
+               Padding="0" 
+               BackgroundColor="LightGray" 
+               Margin="1,1,30,1"
+               BorderColor="SlateGray">
+            <StackLayout>
+                <Label Text="Catégories"
+                       TextColor="Black"
+                       FontSize="Large" 
+                       HorizontalTextAlignment="Center"
+                       Margin="0,10,0,0"/>
+            </StackLayout>
+        </Frame>
+
+        <!-- Frise du bas avec l'ensemble des boutons-->
+        <StackLayout Grid.ColumnSpan="2" 
+                     Grid.Row="4"
+                     Orientation="Horizontal"
+                     HorizontalOptions="CenterAndExpand"
+                     Margin="0,0,0,10">
+            <Button Text="+ Dépenses"
+                    FontSize="Micro"
+                    Clicked="OnClickOutgoingsPage"/>
+            <Button Text="+ Entrées"
+                    FontSize="Micro"
+                    Clicked="OnClickEntriesPage"/>
+            <Button Text="+ Epargne"
+                    FontSize="Micro"/>
+            <Button Text="+ Frais fixes"
+                    FontSize="Micro"/>
+        </StackLayout>
+    </Grid>
+        
+        <!--<Editor AutoSize="TextChanges"
+                Placeholder="Edit me"
+                PlaceholderColor="AliceBlue"
+                TextColor="White"
+                TextChanged="Editor_TextChanged"
+                Completed="Editor_Completed"/>
+        <Entry Text="Salut"
+               TextChanged="Entry_TextChanged"
+               Completed="Entry_Completed"/>
+        <Label x:Name="LblCompleted"/>-->
+        
+</ContentPage>
