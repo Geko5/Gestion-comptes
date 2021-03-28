@@ -4,6 +4,9 @@ using System.Text;
 using SQLite;
 using Xamarin.Forms;
 
+/// <summary>
+/// prout
+/// </summary>
 namespace Gestion_comptes.Model
 {
     /// <summary>
