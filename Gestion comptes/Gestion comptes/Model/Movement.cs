@@ -7,6 +7,7 @@ using Xamarin.Forms;
 /// <summary>
 /// prout
 /// </summary>
+/// Angela
 namespace Gestion_comptes.Model
 {
     /// <summary>
