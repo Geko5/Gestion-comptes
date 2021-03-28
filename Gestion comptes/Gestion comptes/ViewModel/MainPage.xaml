@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Gestion_comptes.ViewModel.MainPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Réinitialiser un nouveau mois" Order="Secondary" Priority="1" Clicked="OnClickResetMenu"/>
+        <ToolbarItem Text="Récupération des données" Order="Secondary" Priority="2"/>
+    </ContentPage.ToolbarItems>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Frise du haut avec les dates-->
+        <StackLayout Grid.ColumnSpan="2" 
+                     Orientation="Horizontal"
+                     Margin="15,5">
+            <Label x:Name="LabelDate"
+                   FontSize="Large"
+                   TextColor="Black"/>
+            <Label x:Name="LabelMonth"
+                   FontSize="Large" 
+                   HorizontalOptions="EndAndExpand"
+                   TextColor="Black"/>
+        </StackLayout>
+
+        <!-- Fenêtres au milieu de l'application-->
+        <Frame CornerRadius="5" 
+               Grid.Row="1" 
+               Grid.Column="0" 
+               OutlineColor="Black" 
+               Padding="0" 
+               Margin="15,1,1,1"
+               BorderColor="SlateGray"
+               BackgroundColor="GhostWhite">
+            <StackLayout>
+                <Label Text="Actuel"
+                       TextColor="Black"
+                       FontSize="Large" 
+                       HorizontalTextAlignment="Center"
+                       Margin="5,10"/>
+                <Label x:Name="LabelActualAmount"
+                       FontSize="Large" 
+                       HorizontalTextAlignment="Center"/>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Label FontSize="Caption"
+                           FontAttributes ="Italic"
+                           Text="Prévisionnel :"/>
+                    <Label x:Name="LabelProvisionalAmount"
+                           FontSize="Caption"
+                           FontAttributes ="Italic"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Label FontSize="Caption"
+                           FontAttributes ="Italic"
+                           Text="Total :"/>
+                    <Label x:Name="LabelActualAmountWithSavings"
+                           FontSize="Caption"
+                           FontAttributes ="Italic"/>
+                </StackLayout>
+                <Button Text="Détails"
+                        FontSize="Micro"
+                        Clicked="OnClickVisualizingPage"    
+                        VerticalOptions="EndAndExpand"
+                        BackgroundColor="GhostWhite"
+                        Margin="5,5"/>
+            </StackLayout>
+        </Frame>
+
+        <Frame CornerRadius="5" 
+               Grid.Row="1" 
+               Grid.Column="1" 
+               OutlineColor="Black" 
+               Padding="0" 
+               BackgroundColor="GhostWhite" 
+               Margin="1,1,15,1"
+               BorderColor="SlateGray">
+            <StackLayout>
+                <Label Text="Dépenses"
+                       TextColor="Black"
+                       FontSize="Large" 
+                       HorizontalTextAlignment="Center"
+                       Margin="5,10"/>
+                <Label x:Name="LabelTotalAmountOutgoings"
+                       TextColor="Red"
+                       FontSize="Large" 
+                       HorizontalTextAlignment="Center"
+                       Margin="5,10"/>
+                <Button Text="Détails"
+                        FontSize="Micro"
+                        Clicked="OnClickOutgoingsPage"
+                        VerticalOptions="EndAndExpand"
+                        BackgroundColor="GhostWhite"
+                        Margin="5,5"/>
+            </StackLayout>
+        </Frame>
+
+        <Frame CornerRadius="5" 
+               Grid.Row="2" 
+               Grid.Column="0" 
+               OutlineColor="Black" 
+               Padding="0" 
+               BackgroundColor="GhostWhite" 
+               Margin="15,1,1,1"
+               BorderColor="SlateGray">
+            <StackLayout>
+                <Label Text="Frais fixes"
+                       TextColor="Black"
+                       FontSize="Large" 
+                       HorizontalTextAlignment="Center"
+                       Margin="5,10"/>
+                <Label x:Name="LabelTotalAmountFixedCosts"
+                       TextColor="Red"
+                       FontSize="Large" 
+                       HorizontalTextAlignment="Center"
+                       Margin="5,10"/>
+                <Button Text="Détails"
+                        FontSize="Micro"
+                        Clicked="OnClickFixedCostsPage"
+                        VerticalOptions="EndAndExpand"
+                        BackgroundColor="GhostWhite"
+                        Margin="5,5"/>
+            </StackLayout>
+        </Frame>
+
+        <Frame CornerRadius="5" 
+               Grid.Row="2" 
+               Grid.Column="1" 
+               OutlineColor="Black" 
+               Padding="0" 
+               BackgroundColor="GhostWhite" 
+               Margin="1,1,15,1"
+               BorderColor="SlateGray">
+            <StackLayout>
+                <Label Text="Entrées"
+                       TextColor="Black"
+                       FontSize="Large" 
+                       HorizontalTextAlignment="Center"
+                       Margin="5,10"/>
+                <Label x:Name="LabelTotalAmountEntries"
+                       TextColor="Green"
+                       FontSize="Large" 
+                       HorizontalTextAlignment="Center"
+                       Margin="5,10"/>
+                <Button Text="Détails"
+                        FontSize="Micro"
+                        Clicked="OnClickEntriesPage"
+                        BackgroundColor="GhostWhite"
+                        Margin="5,5"/>
+            </StackLayout>
+        </Frame>
+
+        <Frame CornerRadius="5" 
+               Grid.Row="3" 
+               Grid.Column="0" 
+               OutlineColor="Black" 
+               Padding="0" 
+               BackgroundColor="GhostWhite" 
+               Margin="15,1,1,1"
+               BorderColor="SlateGray">
+            <StackLayout>
+                <Label Text="Epargne"
+                       TextColor="Black"
+                       FontSize="Large" 
+                       HorizontalTextAlignment="Center"
+                       Margin="5,10"/>
+                <Label x:Name="LabelTotalAmountSavings"
+                       TextColor="Green"
+                       FontSize="Large" 
+                       HorizontalTextAlignment="Center"
+                       Margin="5,10"/>
+                <Button Text="Détails"
+                        FontSize="Micro"
+                        Clicked="OnClickSavingsPage"
+                        BackgroundColor="GhostWhite"
+                        Margin="5,5"/>
+            </StackLayout>
+        </Frame>
+
+        <Frame CornerRadius="5" 
+               Grid.Row="3" 
+               Grid.Column="1" 
+               OutlineColor="Black" 
+               Padding="0" 
+               BackgroundColor="GhostWhite" 
+               Margin="1,1,15,1"
+               BorderColor="SlateGray">
+            <StackLayout>
+                <Label Text="Divers"
+                       TextColor="Black"
+                       FontSize="Large" 
+                       HorizontalTextAlignment="Center"
+                       Margin="0,10,0,0"/>
+            </StackLayout>
+        </Frame>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Gestion_comptes.View.UpdateMovementModalPage">
+    <ContentPage.Content>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <StackLayout Grid.Row="0" Margin="10,10">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="Montant :" 
+                           VerticalTextAlignment="Center"
+                           FontAttributes="Bold"
+                           Grid.Row="0" Grid.Column="0"/>
+                    <Editor x:Name="TxtAmountUpdated" 
+                            HeightRequest="40" 
+                            Completed="TxtAmountUpdated_Completed"
+                            TextChanged="TxtAmountUpdated_TextChanged"
+                            Grid.Row="0" Grid.Column="1"/>
+                    <Label x:Name="LblAmountUpdatedValidation"
+                           Grid.Row="1" Grid.Column="1"/>
+
+                    <Label Text="Catégorie :" 
+                           VerticalTextAlignment="Center"
+                           FontAttributes="Bold"
+                           Grid.Row="2" Grid.Column="0"/>
+                    <Editor x:Name="TxtCategoryUpdated" 
+                            HeightRequest="40" 
+                            Completed="TxtCategoryUpdated_Completed"
+                            TextChanged="TxtCategoryUpdated_TextChanged"
+                            Grid.Row="2" Grid.Column="1"/>
+                    <Label x:Name="LblCategoryUpdatedValidation"
+                           Grid.Row="3" Grid.Column="1"/>
+
+                    <Label Text="Date :" 
+                           VerticalTextAlignment="Center"
+                           FontAttributes="Bold"
+                           Grid.Row="4" Grid.Column="0"/>
+                    <DatePicker x:Name="TxtDateUpdated" 
+                                Format="dd-MM-yyyy"
+                                FontSize="Body"
+                                Grid.Row="4" Grid.Column="1"/>
+        </Grid>
+            </StackLayout>
+
+            <Button x:Name="BtnUpdateMovement" 
+                    Grid.Row="1"
+                    FontSize="Micro"
+                    Clicked="OnClickUpdateButton"  
+                    Text="Modifier"
+                    Margin="10,10"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

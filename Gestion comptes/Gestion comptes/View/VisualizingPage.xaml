@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Gestion_comptes.View.VisualizingPage">
+
+    <ContentPage.Content>
+        <ListView x:Name="ListMovementsOfTotalCosts"
+                  Margin="15,5"
+                  RowHeight="30">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="10"/>
+                                <ColumnDefinition Width="70"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" 
+                                   Text="{Binding Sign}" 
+                                   TextColor="{Binding LabelTextColor}" 
+                                   FontAttributes="{Binding LabelFontAttribute}"/>
+                            
+                            <Label Grid.Row="0" Grid.Column="1" 
+                                   Text="{Binding Amount, StringFormat='{}{0:N} €'}" 
+                                   TextColor="{Binding LabelTextColor}" 
+                                   FontAttributes="{Binding LabelFontAttribute}"/>
+                            
+                            <Label Grid.Row="0" Grid.Column="2" 
+                                   Text="{Binding Category}" 
+                                   TextColor="{Binding LabelTextColor}" 
+                                   FontAttributes="{Binding LabelFontAttribute}"/>
+                            
+                            <Label Grid.Row="0" Grid.Column="3" 
+                                   Text="{Binding Date, StringFormat='{}{0:dd/MM/yyyy}'}" 
+                                   TextColor="{Binding LabelTextColor}" 
+                                   FontAttributes="{Binding LabelFontAttribute}"/>
+                        </Grid>
+                        <ViewCell.ContextActions>
+                            <MenuItem x:Name="ButtonUpdateMovement"
+                                      Text="Modifier"
+                                      Clicked="UpdateMovementOnClick"
+                                      CommandParameter="{Binding .}"/>
+                            <MenuItem x:Name="ButtonDeleteMovement"
+                                      Text="Supprimer"
+                                      Clicked="DeleteMovementOnClick"
+                                      CommandParameter="{Binding .}"/>
+                        </ViewCell.ContextActions>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>

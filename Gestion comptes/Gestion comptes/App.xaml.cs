@@ -2,6 +2,9 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Diagnostics;
+using Gestion_comptes.ViewModel;
+using Gestion_comptes.Model;
+using System.IO;
 
 namespace Gestion_comptes
 {
@@ -10,6 +13,22 @@ namespace Gestion_comptes
     /// </summary>
     public partial class App : Application
     {
+        static MovementDAL _database;
+
+        /// <summary>
+        /// Propriété pour accéder à la base de données
+        /// </summary>
+        public static MovementDAL DataBase
+        {
+            get
+            {
+                if (_database == null)
+                    _database = new MovementDAL(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "movements.db3"));
+
+                return _database;
+            }
+        }
+
         /// <summary>
         /// Constructeur de l'appli
         /// </summary>
@@ -18,7 +37,11 @@ namespace Gestion_comptes
             InitializeComponent();
 
             // MainPage est définit comme Page "root" de notre NavigationPage
-            MainPage = new NavigationPage(new MainPage());
+            MainPage = new NavigationPage(new MainPage())
+            {
+                BarBackgroundColor = Color.FromHex("B5338A"),
+                BarTextColor = Color.White
+            };
         }
 
         /// <summary>

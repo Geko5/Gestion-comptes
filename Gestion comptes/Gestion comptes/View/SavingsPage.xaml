@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Gestion_comptes.View.SavingsPage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackLayout Grid.Row="0" Margin="10,10">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="Montant :" 
+                           VerticalTextAlignment="Center"
+                           FontAttributes="Bold"
+                           Grid.Row="0" Grid.Column="0"/>
+                    <Editor x:Name="TxtAmount" 
+                            HeightRequest="40" 
+                            Completed="TxtAmount_Completed"
+                            TextChanged="TxtAmount_TextChanged"
+                            Grid.Row="0" Grid.Column="1"/>
+                    <Label x:Name="LblAmountValidation"
+                           Grid.Row="1" Grid.Column="1"/>
+
+                    <Label Text="Catégorie :" 
+                           VerticalTextAlignment="Center"
+                           FontAttributes="Bold"
+                           Grid.Row="2" Grid.Column="0"/>
+                    <Editor x:Name="TxtCategory" 
+                            HeightRequest="40" 
+                            Completed="TxtCategory_Completed"
+                            TextChanged="TxtCategory_TextChanged"
+                            Grid.Row="2" Grid.Column="1"/>
+                    <Label x:Name="LblCategoryValidation"
+                           Grid.Row="3" Grid.Column="1"/>
+
+                    <Label Text="Date :" 
+                           VerticalTextAlignment="Center"
+                           FontAttributes="Bold"
+                           Grid.Row="4" Grid.Column="0"/>
+                    <DatePicker x:Name="TxtDate" 
+                                Format="dd-MM-yyyy"
+                                FontSize="Body"
+                                Grid.Row="4" Grid.Column="1"/>
+                </Grid>
+            </StackLayout>
+
+            <Button x:Name="BtnAddMovement" 
+                    Grid.Row="1"
+                    FontSize="Micro"
+                    Clicked="OnClickButtonAdd" 
+                    Text="Ajouter"
+                    Margin="10,10"/>
+
+            <ListView x:Name="ListMovementsOfSavings"
+                      Grid.Row="2"
+                      Margin="15,5"
+                      RowHeight="30">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10"/>
+                                    <ColumnDefinition Width="70"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" 
+                                   Text="{Binding Sign}" 
+                                   TextColor="{Binding LabelTextColor}" 
+                                   FontAttributes="{Binding LabelFontAttribute}"/>
+
+                                <Label Grid.Row="0" Grid.Column="1" 
+                                   Text="{Binding Amount, StringFormat='{}{0:N} €'}" 
+                                   TextColor="{Binding LabelTextColor}" 
+                                   FontAttributes="{Binding LabelFontAttribute}"/>
+
+                                <Label Grid.Row="0" Grid.Column="2" 
+                                   Text="{Binding Category}" 
+                                   TextColor="{Binding LabelTextColor}" 
+                                   FontAttributes="{Binding LabelFontAttribute}"/>
+
+                                <Label Grid.Row="0" Grid.Column="3" 
+                                   Text="{Binding Date, StringFormat='{}{0:dd/MM/yyyy}'}" 
+                                   TextColor="{Binding LabelTextColor}" 
+                                   FontAttributes="{Binding LabelFontAttribute}"/>
+                            </Grid>
+                            <ViewCell.ContextActions>
+                                <MenuItem x:Name="ButtonUpdateMovement"
+                                          Text="Modifier"
+                                          Clicked="UpdateMovementOnClick"
+                                          CommandParameter="{Binding .}"/>
+                                <MenuItem x:Name="ButtonDeleteMovement"
+                                          Text="Supprimer"
+                                          Clicked="DeleteMovementOnClick"
+                                          CommandParameter="{Binding .}"/>
+                            </ViewCell.ContextActions>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
